@@ -1,0 +1,50 @@
+/* HEADER */
+
+header {
+    background-color: #f48221;
+    width: 100%;
+    height: 60px;
+}
+
+header .container {
+    color: #000;
+    text-align: center;
+    display: inline;
+}
+
+header .container > span {
+    width: 25%;
+    float: left;
+}
+
+header .container > h2 {
+    width: 50%;
+}
+
+header .container .menu-wrapper {
+    width: 25%;
+    float: right;
+}
+
+/* MAIN */
+
+.carousel-container {
+    margin: 0 auto;
+    width: 90%;
+    height: 40%;
+}
+
+.carousel-container .carousel-header {
+    background-color: #332f2e;
+    height: 40px;
+}
+
+.carousel-container .buttons-area {
+    background-color: #efefef;
+    height: 40px;
+}
+
+.carousel-container .carousel-body {
+    background-color: #f5f5f5;
+    height: 200px;
+}
