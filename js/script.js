@@ -1,65 +1,156 @@
 (() => {
-    console.log('esisto');
+    const ICON_PARENT_NODE = '.icon-container';
+    const TITLE_PARENT_NODE = '.course-title';
+    const CONTENT_PARENT_NODE = '.course-content';
+    const JSON_PATH = '/resources/data.json'; 
 
-    let array = ['A','B','C','D','E','F','G','H','I'];
-    const jsonPath = '/resources/data.json'; 
-    let data = [];
-    var json = $.getJSON(jsonPath, e => data = e.courses);
-
-    console.log(data);
+    const INDICATOR_DEFAULT_CLASS = 'inactive indicator';
+    const INDICATOR_ACTIVE_CLASS = 'active';
+    const COURSE_ICON_DEFAULT_CLASS = 'course-icon';
 
     let index = 0;
+    let previousIndex = 0;
+    let data = [];
+    let carouselList = [];
     let indicatorWrapper = document.querySelector('.indicator-wrapper div');
-    let courseIcon = document.querySelector('.course-icon');
-    let courseTitle = document.querySelector('.course-title');
-    let courseContent = document.querySelector('.course-content');
+
+
+
+    var json = $.getJSON(JSON_PATH, (obj)=>{
+        data = obj.courses;
+    }).done(function(){ 
+        var ca = new Carousel(data[0].icon, data[0].title, data[0].content)
+        .setIconClass(COURSE_ICON_DEFAULT_CLASS)
+        .setIconParentNode(ICON_PARENT_NODE)
+        .setTitleParentNode(TITLE_PARENT_NODE)
+        .setContentParentNode(CONTENT_PARENT_NODE);
+    }) ;
+
+    
     
     setTimeout(() => {
         for(i=0;i<data.length;++i){
             let divNode = document.createElement('div');
-            divNode.classList += 'inactive indicator';
+            divNode.classList += INDICATOR_DEFAULT_CLASS;
+            i==0 ? divNode.classList += ' '+INDICATOR_ACTIVE_CLASS : null;
             indicatorWrapper.appendChild(divNode);
+            carouselList.push(new Carousel(data[i].icon, data[i].title, data[i].content)
+            .setIconClass(COURSE_ICON_DEFAULT_CLASS)
+            .setIconParentNode(ICON_PARENT_NODE)
+            .setTitleParentNode(TITLE_PARENT_NODE)
+            .setContentParentNode(CONTENT_PARENT_NODE));
         }
-    },10);
-    setInterval(()=>{
-        // courseIcon.innerHTML = "<i class="+data[index].icon+"></i>";
-        // courseIcon.
-        courseIcon.classList = ['course-icon '+ data[index].icon];
-        courseTitle.innerHTML = '<b>'+data[index].title+'</b>';
-        courseContent.innerHTML = '<p>'+data[index].content+'</p>';
+    },0);
 
-        // var node = document.createElement('p');
-        // var textnode = document.createTextNode(data[index].content); 
-        // node.appendChild(textnode);
-        // courseContent.appendChild(node);
-        // let nod = document.querySelectorAll('.indicator');
-        // console.log(nod[0]);
-        toggleClass(indicatorWrapper.children[index]);
-        // index >= 1 ? toggleClass(indicatorWrapper.children[index-1]) :  toggleClass(indicatorWrapper.children[data.length-1]);
-        // let previous = indicatorWrapper.children[index-1];
 
-        let previous = '';
-        if(index == 0){
-            previous = indicatorWrapper.children[data.length-1];
-            if(previous.classList.contains('active') ){
-                previous.classList.toggle('active');
+    changeContent = (isRight) => {
+
+        index = updateIndex(carouselList,index,isRight);
+        updateIndicator(indicatorWrapper, index, previousIndex, INDICATOR_ACTIVE_CLASS);
+
+        carouselList[index]
+        .displayIconNode()
+        .displayTitleNode()
+        .displayContentNode();
+        previousIndex = index;
+    };
+
+
+    updateIndex = (dataArray, index, isRight) => {
+        if(isRight){
+            if(++index != dataArray.length){
+                return index;
+            }
+            else {
+                return 0;
             }
         }
         else {
-            previous = indicatorWrapper.children[index-1];
-            previous.classList.toggle('active');
-        }
-        
-
-        // toggleClass(node);
-        
-        data.length != ++index ? index : index = 0;
-    },2000);
-
-    toggleClass = (node) => {
-        node.classList.toggle('active');
+            if(--index != -1){
+                return index;
+            }
+            else {
+                return dataArray.length-1;
+            }
+        }    
     }
 
 
+    updateIndicator = (indicatorArray, index, previousIndex, className) => {
+        indicatorArray.children[index].classList.toggle(className);
+        indicatorArray.children[previousIndex].classList.toggle(className);
+    }
 
+ 
+
+    function Carousel(icon, title, content) {
+        this.icon = icon;
+        this.title = title;
+        this.content = content;
+        this.classList = [icon];
+        this.iconNode = document.createElement('i');
+
+        this.iconParentNode = '';
+        this.titleParentNode = '';
+        this.contentParentNode = '';
+
+
+
+        this.getParentNode = (name) => {
+            return document.querySelector(name);
+        };
+
+        this.setIconClass = (iconClass) => {
+            !this.classList.includes(iconClass) ? this.classList.push(iconClass) : null;
+            return this;
+        };
+
+        this.setIconParentNode = (node) => {
+            this.iconParentNode = this.getParentNode(node);
+            return this;
+        }
+
+        this.setTitleParentNode = (node) => {
+            this.titleParentNode = this.getParentNode(node);
+            return this;
+        }
+
+        this.setContentParentNode = (node) => {
+            this.contentParentNode = this.getParentNode(node);
+            return this;
+        }
+
+
+        this.displayIconNode = () => {
+            this.iconNode.classList = this.classList.join(' ');
+            this.iconParentNode.innerHTML = null;
+            this.iconParentNode.appendChild(this.iconNode);
+            return this;
+         };
+
+        this.displayTitleNode = () => {
+           this.titleParentNode.innerHTML = '<b>'+this.title+'</b>';
+           return this;
+        };
+
+        this.displayContentNode = () => {
+            this.contentParentNode.innerHTML = '<p>'+this.content+'</p>';
+            return this;
+        };
+    }
+
+    function CarouselIndicator(isActive){
+        this.disabledColor = disabledColor;
+        this.activeColor = activeColor;
+
+        this.setActiveColor = (color) => {
+            this.activeColor = color;
+        }
+
+        this.setDisabledColor = (color) => {
+            this.disabledColor = color;
+        }
+    }
+
+   
 })()
