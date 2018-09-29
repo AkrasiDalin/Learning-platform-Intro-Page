@@ -1,50 +1,198 @@
-/* HEADER */
-
+/*-------------------------------------- HEADER */
+* {
+    font-family: SourceSansProRegular, arial, sans-serif;
+}
 header {
     background-color: #f48221;
-    width: 100%;
     height: 60px;
 }
 
-header .container {
-    color: #000;
-    text-align: center;
-    display: inline;
+header .nav-container {
+    padding: 7px;
+    width: 100%;
+    height: 100%;
+    
+    
 }
 
-header .container > span {
-    width: 25%;
+header .nav-container .title{
+    text-align: center;
+    color: #fff;
+    margin-top: 10px;
+}
+
+
+
+header .nav-container .logo {
+    /* margin: 0 auto; */
+    margin-top: 6px;
+    
+}
+
+header .nav-container .logo img {
+    width: 30px;
+    height: 30px;
+    margin-left: 9%;
+}
+
+
+
+.button {
+    height: 100%;
+    border-style: none;
+    outline: 0;
+}
+header .nav-container .header-menu {
+    font-size: 2em;
+    background: rgba(0,0,0,0);
+    color: #fff;
+    text-align: right;
+    padding-right: 0;
+}
+
+header .nav-container .header-menu .button {
+    background: rgba(0,0,0,0);
+    color: #fff;
+    -webkit-text-stroke: 2px  #f48221;
+}
+
+/* 
+
+
+/*-------------------------------------- MAIN */
+
+
+/*------------ CAROUSEL-HEADER */
+main {
+    margin-top:5%;
+}
+
+main.container > p {
+    font-size: 1em;
+    font-weight: 500;
+    font-family: Roboto,sans-serif;
+}
+
+main .carousel-header {
+    background-color: #332f2e;
+    height: 40px;
+    text-align: center;
+    color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+main .carousel-header p {
+   width: 100%;
+}
+
+
+/*------------ CAROUSEL-BUTTONS-AREA */
+
+main .buttons-area {
+    background-color: #efefef;
+    height: 40px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+main .buttons-area .indicator-wrapper:before {
+    content: "";
+    top:0;
+    height: 40%;
+    display: block;
+}
+
+
+main .buttons-area .indicator-wrapper .indicator {
+    height: 10px;
+    width: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.inactive {
+    background-color: #c7c7c7;
+    border: 1px solid #c7c7c7;
+}
+
+.active {
+    background-color:  #f48221;
+    border: 1px solid #f48221;
+}
+
+
+main .buttons-area .button {
+    font-size: 1.3em;
+    background: rgba(0,0,0,0);
+    color: rgba(0,0,0,.6);
+}
+
+main .buttons-area .button:hover {
+    background: #c7c7c7;
+    cursor: pointer;
+}
+
+main .buttons-area .left-button {
     float: left;
 }
 
-header .container > h2 {
-    width: 50%;
-}
-
-header .container .menu-wrapper {
-    width: 25%;
+main .buttons-area .right-button {
     float: right;
 }
 
-/* MAIN */
 
-.carousel-container {
-    margin: 0 auto;
-    width: 90%;
-    height: 40%;
-}
 
-.carousel-container .carousel-header {
-    background-color: #332f2e;
-    height: 40px;
-}
+/*------------ CAROUSEL-BODY */
 
-.carousel-container .buttons-area {
-    background-color: #efefef;
-    height: 40px;
-}
-
-.carousel-container .carousel-body {
+main .carousel-body {
     background-color: #f5f5f5;
-    height: 200px;
+    height: 300px;
+}
+
+main .carousel-body:before{
+    content: "";
+    width: 90%;
+    position: relative;
+    height: 30px;
+    bottom: -350;
+    margin: 0 auto;
+    box-shadow: 0px 80px 60px  rgba(0, 0, 0, 0.6);
+    clip-path: ellipse(630px 70px at bottom);
+    z-index: -1;
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);   
+}
+
+main .carousel-body .content-container {
+    margin: 5%;
+}
+
+main .carousel-body .content-container .course-icon {
+    color: #f48221;
+    font-size: 6em;
+}
+
+main .carousel-body  .content-container .course-icon:before{
+    width: 1.5em;
+    position: absolute;
+    height: 9px;
+    left: 0;   
+    box-shadow: 0px 125px 20px rgba(0,0,0,.4);
+    border-radius: 100%;
+    clip-path: ellipse(300px 130px at center);
+}
+
+main .carousel-body   .content-container .icon-container {    
+    text-align: center;
+}
+
+main .carousel-body  .content-container .line-wrapper .vertical-line {
+    height: 130px;
+    width: 1px;
+    background-color: rgba(0,0,0,.1);
+    margin: 0 auto;
 }

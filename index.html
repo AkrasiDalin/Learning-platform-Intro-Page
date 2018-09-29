@@ -1,49 +1,90 @@
 <html>
     <head>
         <title>HTML5 Assignment</title>
-        <link rel='stylesheet' type='text/css' href='styles/style.css'/>
-        <script src='js/script.js' defer></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/style.css"/>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+        <script src="js/script.js" defer></script>
     </head>
 
     <body>
         <header>
-            <div class='container'>
-                <span>ICON</span>
-                <h2>HTML5 Assignment</h2>
-                <div class='menu-wrapper'>
-                    <span>B1</span>
-                    <span>B2</span>
-                    <span>B3</span>
-                </div> <!-- end menu-objs  -->
-            </div> <!-- end header container -->
+            <div class="nav-container row">
+                <div class="col-xs-1 col-sm-3 col-md-3 logo">
+                    <img src="http://clients.saffroninteractive.com/saffron/html5_assignment/s_logo_white.png"/>
+                </div>
+                <div class="title col-xs-5 col-sm-6 col-md-6">
+                    <h5>HTML5 Assignment</h5>
+                </div>
+                <div class="col-xs-1 col-sm-3 col-md-3 header-menu">
+                    <button class="button left-button">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="button menu-button">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <button class="button right-button">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
         </header>
-        <main>
-            <div class='carousel-container'>
 
-                <!-- CAROUSEL HEADER -->
-                <div class='carousel-header'>
-                    HEADER
+
+        <main class="container">
+            <p>Beyond 'click-next-to-continue'</p>
+
+            <div class="row carousel-header">
+                <p>How we create unforgettable experiences</p>
+            </div>
+
+            <div class="row buttons-area">
+                <div class="col ">
+                    <button class="button left-button">
+                        <i class="fas fa-chevron-left"></i>
+                    </button> <!-- left button -->
                 </div>
 
-                <!-- CAROUSEL BUTTONS SECTION -->
-                <div class='buttons-area'>
-                    
-                   <button class='left-button'><</button> <!-- left button -->
-
-                   <div class='indicator-wrapper'> <!-- indicators -->
-                       <ul>
-                        <li>
-                            <span id='indicator1'>o</span>
-                        </li>
-                       </ul>
+                <div class="inds">
+                    <div class="indicator-wrapper"> <!-- indicators -->
+                        <div>
+                        </div>
                    </div>
-
-                   <button class='right-button'>></button> <!-- right button -->
                 </div>
 
-                <!-- CAROUSEL MAIN BODY -->
-                <div class='carousel-body'>
-                    BODY
+                <div class="col ">
+                    <button class="button right-button">
+                        <i class="fas fa-chevron-right"></i>
+                   </button> <!-- right button -->
+                </div>
+
+            </div>
+
+
+
+            <div class="row carousel-body">
+                <div class="row content-container">
+
+                    <div class="col-sm-3 icon-container">
+                        <i class="course-icon"></i>
+                    </div>
+
+                    <div class="col-sm-1 line-wrapper">
+                        <div class="vertical-line"></div>
+                    </div>
+
+                    <div class="col-sm-8 course-container">
+                        <div class="row course-title">
+                            <b>loading...</b>
+                        </div>
+                        <div class="row course-content">
+                                loading...
+                        </div>
+                    </div>    
                 </div>
             </div>
         </main>
