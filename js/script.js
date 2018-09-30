@@ -1,9 +1,13 @@
 (() => {
+    const WINDOW_WIDTH = window.innerWidth;
     const ICON_PARENT_NODE = '.icon-container';
     const TITLE_PARENT_NODE = '.course-title';
     const CONTENT_PARENT_NODE = '.course-content';
-    const JSON_PATH = '/resources/data.json'; 
+    const JSON_PATH = '/resources/data.json';
 
+    const MAIN = document.querySelector('main');
+    const CAROUSEL_LEFT_BUTTON = document.querySelector('button[name="left"]');
+    const CAROUSEL_RIGHT_BUTTON = document.querySelector('button[name="right"]');
     const INDICATOR_DEFAULT_CLASS = 'inactive indicator';
     const INDICATOR_ACTIVE_CLASS = 'active';
     const COURSE_ICON_DEFAULT_CLASS = 'course-icon';
@@ -14,7 +18,7 @@
     let carouselList = [];
     let indicatorWrapper = document.querySelector('.indicator-wrapper div');
 
-
+    
 
     var json = $.getJSON(JSON_PATH, (obj)=>{
         data = obj.courses;
@@ -26,7 +30,6 @@
         .setContentParentNode(CONTENT_PARENT_NODE);
     }) ;
 
-    
     
     setTimeout(() => {
         for(i=0;i<data.length;++i){
@@ -42,6 +45,19 @@
         }
     },0);
 
+    
+
+    let xStart = 0;
+    swipeStart = (e) => {
+        xStart = e.offsetX;
+    }
+    swipeEnd = (e) => {
+        e.offsetX > xStart ? changeContent(true)
+        : e.offsetX > WINDOW_WIDTH/2 ? changeContent(true)
+        : changeContent(false);
+    }
+
+    
 
     changeContent = (isRight) => {
 
@@ -81,8 +97,15 @@
         indicatorArray.children[previousIndex].classList.toggle(className);
     }
 
- 
+    MAIN.addEventListener('touchStart', swipeStart, false);
+    MAIN.addEventListener('mousedown', swipeStart, false);
+    MAIN.addEventListener('touchEnd', swipeEnd, false);
+    MAIN.addEventListener('mouseup', swipeEnd, false);
+    CAROUSEL_LEFT_BUTTON.addEventListener('click', changeContent, false);
+    CAROUSEL_RIGHT_BUTTON.addEventListener('click', changeContent, false);
 
+
+    
     function Carousel(icon, title, content) {
         this.icon = icon;
         this.title = title;
