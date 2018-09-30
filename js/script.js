@@ -146,18 +146,36 @@
 
         this.displayIconNode = () => {
             this.iconNode.classList = this.classList.join(' ');
-            this.iconParentNode.innerHTML = null;
-            this.iconParentNode.appendChild(this.iconNode);
+            $(this.iconParentNode).clearQueue();
+            $(this.iconParentNode).stop();
+            $(this.iconParentNode).animate({fontSize: '.9em'},500,()=>{
+                this.iconParentNode.innerHTML = null;
+               
+                this.iconParentNode.appendChild(this.iconNode);
+            $(this.iconParentNode).animate({fontSize: '1em'},100);
+            });
+
             return this;
          };
 
         this.displayTitleNode = () => {
-           this.titleParentNode.innerHTML = '<b>'+this.title+'</b>';
+            $(this.titleParentNode).clearQueue();
+            $(this.titleParentNode).stop();
+            $(this.titleParentNode).animate({fontSize: '.9em'},100,()=>{
+                this.titleParentNode.innerHTML = '<b>'+this.title+'</b>';
+            $(this.titleParentNode).animate({fontSize: '1em'},100);
+            });
+           
            return this;
         };
 
         this.displayContentNode = () => {
-            this.contentParentNode.innerHTML = '<p>'+this.content+'</p>';
+            $(this.contentParentNode).clearQueue();
+            $(this.contentParentNode).stop();
+            $(this.contentParentNode).animate({fontSize: '.9em'},500,()=>{
+                this.contentParentNode.innerHTML = '<p>'+this.content+'</p>';
+            $(this.contentParentNode).animate({fontSize: '1em'},100);
+        });
             return this;
         };
     }
