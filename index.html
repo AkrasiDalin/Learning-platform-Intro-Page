@@ -9,30 +9,31 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
         <script src="js/script.js" defer></script>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     </head>
 
     <body>
-        <header>
-            <div class="nav-container row">
-                <div class="col-xs-1 col-sm-3 col-md-3 logo">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid nav-container row">
+                <div class="col-xs-1 col-sm-1 col-md-1  navbar-brand logo">
                     <img src="http://clients.saffroninteractive.com/saffron/html5_assignment/s_logo_white.png"/>
                 </div>
-                <div class="title col-xs-5 col-sm-6 col-md-6">
+                <div class="title col-xs-12 col-sm-12 col-md-12">
                     <h5>HTML5 Assignment</h5>
                 </div>
-                <div class="col-xs-1 col-sm-3 col-md-3 header-menu">
-                    <button class="button left-button">
+                <div class="btn col-xs-3 col-sm-3 col-md-3 header-menu">
+                    <button class="btn button left-button">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    <button class="button menu-button">
+                    <button class="btn button menu-button">
                         <i class="fas fa-bars"></i>
                     </button>
-                    <button class="button right-button">
+                    <button class="btn button right-button">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
             </div>
-        </header>
+        </nav>
 
 
         <main class="container">
@@ -46,10 +47,10 @@
                 <div class="col ">
                     <button class="button left-button" name="left" onclick="changeContent(0)">
                         <i class="fas fa-chevron-left"></i>
-                    </button> <!-- left button -->
+                    </button>
                 </div>
 
-                <div class="indicator-wrapper"> <!-- indicators -->
+                <div class="indicator-wrapper">
                     <div>
                     </div>
                 </div>
@@ -57,7 +58,7 @@
                 <div class="col">
                     <button class="button right-button" name="right" onclick="changeContent(1)">
                         <i class="fas fa-chevron-right"></i>
-                   </button> <!-- right button -->
+                   </button>
                 </div>
             </div>
 
@@ -70,20 +71,21 @@
                         <i class="course-icon fas fa-tablet-alt"></i>
                     </div>
 
-                    <div class="col-sm-1 line-wrapper">
+                    <div class="col-xs-hidden col-sm-1 line-wrapper">
                         <div class="vertical-line"></div>
                     </div>
+                    <br>
 
-                    <div class="col-sm-8 course-container">
+                    <article class="col-sm-8 course-container">
                         <div class="row course-title">
                             <b>Mobile learning and apps</b>
                         </div>
-                        <div class="row course-content">
+                        <section class="row course-content">
                             <p>
                                Learners expect experiences they can touch and tools which are accessible from anywhere. We use HTML5 to build responsive content which learners can navigate like the apps and websites they love. One experience on any device."
                             </p>
-                        </div>
-                    </div>    
+                        </section>
+                    </article>    
                 </div>
             </div>
         </main>

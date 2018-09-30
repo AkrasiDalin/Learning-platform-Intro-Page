@@ -1,38 +1,37 @@
+/*
+Title: Saffron Interactive coding challenge
+Author: Akrasi Dalin
+Version: 1.0
+Module: style.css
+*/
+
+
 /*-------------------------------------- HEADER */
 * {
     font-family: SourceSansProRegular, arial, sans-serif;
 }
-header {
+nav {
     background-color: #f48221;
     height: 60px;
 }
 
-header .nav-container {
+nav .nav-container {
     padding: 7px;
     width: 100%;
     height: 100%;
-    
-    
 }
 
-header .nav-container .title{
+nav .nav-container .title {
     text-align: center;
-    color: #fff;
-    margin-top: 10px;
+    color:#fff;
+    position: absolute;
 }
 
 
 
-header .nav-container .logo {
-    /* margin: 0 auto; */
-    margin-top: 6px;
-    
-}
-
-header .nav-container .logo img {
+nav .nav-container .logo img {
     width: 30px;
     height: 30px;
-    margin-left: 9%;
 }
 
 
@@ -40,23 +39,33 @@ header .nav-container .logo img {
 .button {
     height: 100%;
     border-style: none;
-    outline: 0;
 }
-header .nav-container .header-menu {
-    font-size: 2em;
+
+.button:focus {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.button:hover {
+    cursor: pointer;
+    opacity: 0.60;
+    -moz-opacity: 60%;
+    -webkit-opacity: 60%;
+}
+
+nav .nav-container .header-menu {
     background: rgba(0,0,0,0);
     color: #fff;
     text-align: right;
     padding-right: 0;
 }
 
-header .nav-container .header-menu .button {
+nav .nav-container .header-menu .button {
     background: rgba(0,0,0,0);
     color: #fff;
-    -webkit-text-stroke: 2px  #f48221;
 }
 
-/* 
+
 
 
 /*-------------------------------------- MAIN */
@@ -73,6 +82,7 @@ main.container > p {
     font-family: Roboto,sans-serif;
 }
 
+
 main .carousel-header {
     background-color: #332f2e;
     height: 40px;
@@ -84,7 +94,9 @@ main .carousel-header {
 
 main .carousel-header p {
    width: 100%;
+   margin-top: 7px;
 }
+
 
 
 /*------------ CAROUSEL-BUTTONS-AREA */
@@ -112,13 +124,15 @@ main .buttons-area .indicator-wrapper .indicator {
 }
 
 .inactive {
+    transition: background-color 2s ease;
     background-color: #c7c7c7;
-    border: 1px solid #c7c7c7;
+    border: 1px solid transparent;
 }
 
 .active {
+    transition: background-color 1s ease;
     background-color:  #f48221;
-    border: 1px solid #f48221;
+    border: 1px solid transparent;
 }
 
 
@@ -126,11 +140,6 @@ main .buttons-area .button {
     font-size: 1.3em;
     background: rgba(0,0,0,0);
     color: rgba(0,0,0,.6);
-}
-
-main .buttons-area .button:hover {
-    background: #c7c7c7;
-    cursor: pointer;
 }
 
 main .buttons-area .left-button {
@@ -151,7 +160,7 @@ main .carousel-body {
     user-select: none;
 }
 
-main .carousel-body:before{
+main .carousel-body:before {
     content: "";
     width: 90%;
     position: relative;
@@ -159,6 +168,9 @@ main .carousel-body:before{
     bottom: -350;
     margin: 0 auto;
     box-shadow: 0px 80px 60px  rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0px 80px 60px  rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0px 80px 60px  rgba(0, 0, 0, 0.6);
+    -ms-box-shadow: 0px 80px 60px  rgba(0, 0, 0, 0.6);
     clip-path: ellipse(630px 70px at bottom);
     z-index: -1;
     -moz-transform: rotate(180deg);
@@ -179,12 +191,15 @@ main .carousel-body .content-container .course-icon {
 
 main .carousel-body  .content-container .course-icon:before{
     width: 1.5em;
-    position: absolute;
     height: 9px;
     left: 0;   
     box-shadow: 0px 125px 20px rgba(0,0,0,.4);
+    -o-box-shadow: 0px 125px 20px rgba(0,0,0,.4);
+    -moz-box-shadow: 0px 125px 20px rgba(0,0,0,.4);
+    -webkit-box-shadow: 0px 125px 20px rgba(0,0,0,.4);
     border-radius: 100%;
-    clip-path: ellipse(300px 130px at center);
+    clip-path: ellipse(300px 80px at center);
+    -webkit-clip-path: ellipse(300px 80px at center);
 }
 
 main .carousel-body   .content-container .icon-container {    
@@ -197,3 +212,73 @@ main .carousel-body  .content-container .line-wrapper .vertical-line {
     background-color: rgba(0,0,0,.1);
     margin: 0 auto;
 }
+
+
+
+@media (min-width: 0) and (max-width: 576px)  {
+    nav .nav-container .title {
+        right: 15px;
+        top: 16px;
+    }
+    
+}
+
+
+
+
+@media (min-width: 0) and (max-width: 576px)  {
+
+
+    nav .nav-container .header-menu {
+        position: absolute;
+    }
+
+    main .carousel-header {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+
+    
+    main .carousel-body {
+        position: relative;
+    }
+
+
+    main .carousel-body .content-container {
+        position: absolute;
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+        margin: 20px;
+    }
+
+    main .carousel-body .content-container .icon-container {
+        text-align: center;
+        right: 0;
+        display: fixed;
+    }
+
+    main .carousel-body .content-container .course-container {
+        display: fixed;
+    }
+
+
+    main .carousel-body .content-container .course-icon {
+        color: #f48221;
+        font-size: 5em;
+        top:0;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    main .carousel-body  .content-container .line-wrapper .vertical-line {
+        width: 130px;
+        height: 1px;
+        display: none;
+    }
+
+    main .carousel-body .content-container .course-content {
+        font-size: .7em;
+        display: fixed;
+    }
+  }
