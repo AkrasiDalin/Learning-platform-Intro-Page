@@ -1,6 +1,4 @@
 /*
-Title: Saffron Interactive coding challenge
-Author: Akrasi Dalin
 Version: 1.0
 Module: script.js
 */
@@ -42,9 +40,13 @@ Module: script.js
     setTimeout(() => {
         for(i=0;i<data.length;++i){
             let divNode = document.createElement('div');
+
             divNode.classList += INDICATOR_DEFAULT_CLASS;
+            
             i==0 ? divNode.classList += ' '+INDICATOR_ACTIVE_CLASS : null;
+
             indicatorWrapper.appendChild(divNode);
+            
             carouselList.push(new Carousel(data[i].icon, data[i].title, data[i].content)
             .setIconClass(COURSE_ICON_DEFAULT_CLASS)
             .setIconParentNode(ICON_PARENT_NODE)
